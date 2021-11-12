@@ -3,12 +3,17 @@ package main
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/railers/railing/routes"
+	"github.com/railers/railing/stops"
 )
 
 func main() {
 	fmt.Println("Starting api...")
 
 	InitRoutes()
+	go stops.GetStops()
+	go routes.GetRoutes()
 	StartServer()
 }
 
